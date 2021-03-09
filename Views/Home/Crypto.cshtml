@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Crypto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th width="10">ID</th>
+            <th>Name</th>
+            <th>Price /1D</th>
+            <th>MARKETCAP</th>
+            <th>SUPPLY</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>1</td>
+            <td><img src="https://www.cryptocompare.com/@ViewBag.bitcoin.DISPLAY.BTC.USD.IMAGEURL" width="40" />Bitcoin (BTC)</td>
+            <td>
+                @{
+
+
+                    double op = Convert.ToDouble(@ViewBag.bitcoin.RAW.BTC.USD.PRICE) - Convert.ToDouble(@ViewBag.bitcoin.RAW.BTC.USD.CHANGE24HOUR);
+                    double np = Convert.ToDouble(@ViewBag.bitcoin.RAW.BTC.USD.PRICE) - op;
+                    double calc = Convert.ToDouble(np / op);
+                    var sum = calc * 100;
+                    decimal procent = Convert.ToDecimal(sum);
+                }
+
+                @ViewBag.bitcoin.DISPLAY.BTC.USD.PRICE @{
+                    if (Convert.ToDouble(@ViewBag.bitcoin.RAW.BTC.USD.CHANGE24HOUR) > 0)
+                    {
+                        <small style="color:green;">@procent.ToString("#.##")%</small>
+                    }
+                    else
+                    {
+                        <small style="color:red;">-@procent.ToString("#.##")%</small>
+                    }
+                }
+            </td>
+            <td>@ViewBag.bitcoin.DISPLAY.BTC.USD.MKTCAP</td>
+            <td>@ViewBag.bitcoin.DISPLAY.BTC.USD.SUPPLY</td>
+
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><img src="https://www.cryptocompare.com/@ViewBag.bitcoin.DISPLAY.ETH.USD.IMAGEURL" width="40" />Ethereum (ETH)</td>
+            <td>
+                @{
+
+
+                    double op1 = Convert.ToDouble(@ViewBag.bitcoin.RAW.ETH.USD.PRICE) - Convert.ToDouble(@ViewBag.bitcoin.RAW.ETH.USD.CHANGE24HOUR);
+                    double np1 = Convert.ToDouble(@ViewBag.bitcoin.RAW.ETH.USD.PRICE) - op1;
+                    double calc1 = np1 / op1;
+                    var sum1 = calc1 * 100;
+                    decimal procent1 = Convert.ToDecimal(sum1);
+                }
+
+                @ViewBag.bitcoin.DISPLAY.ETH.USD.PRICE @{
+                    if (Convert.ToDouble(@ViewBag.bitcoin.RAW.ETH.USD.CHANGE24HOUR) > 0)
+                    {
+                        <small style="color:green;">@procent1.ToString("#.##")%</small>
+                    }
+                    else
+                    {
+                        <small style="color:red;">-@procent1.ToString("#.##")%</small>
+                    }
+                }
+
+            </td>
+            <td>@ViewBag.bitcoin.DISPLAY.ETH.USD.MKTCAP</td>
+            <td>@ViewBag.bitcoin.DISPLAY.ETH.USD.SUPPLY</td>
+        </tr>
+    </tbody>
+</table>
+
+
