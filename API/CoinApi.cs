@@ -22,7 +22,7 @@ namespace CryptoWebApi.API
                 client.BaseAddress = new Uri(BASE_URL);
                 client.DefaultRequestHeaders.Accept.Add(new
                     System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync("?fsyms=BTC,ETH&tsyms=USD,EUR&api_key=11d644d5bfdc3206ed9cea895cfa808336938450a095e8ab42886c65621e4d79");
+                var response = client.GetAsync("?fsyms=BTC,ETH&tsyms=USD,EUR&api_key=");
                 response.Wait();
                 if (response.IsCompletedSuccessfully)
                 {
