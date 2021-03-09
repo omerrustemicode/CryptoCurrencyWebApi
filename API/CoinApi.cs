@@ -10,7 +10,7 @@ namespace CryptoWebApi.API
 {
     public class CoinApi
     {
-        //private static string API_KEY = "506d03e95525c7d2fb2bb1cce97d4dc3";
+      
 
         public string BASE_URL = "https://min-api.cryptocompare.com/data/pricemultifull";
         public Root getPrice()
